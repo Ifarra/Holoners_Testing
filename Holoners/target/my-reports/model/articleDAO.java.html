@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>articleDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">articleDAO.java</span></div><h1>articleDAO.java</h1><pre class="source lang-java linenums">package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import controller.article;
+
+@SuppressWarnings(&quot;deprecation&quot;)
+<span class="nc" id="L15">public class articleDAO {</span>
+
+	public static List&lt;article&gt; getAllRecords() {
+<span class="nc" id="L18">	    List&lt;article&gt; list = new ArrayList&lt;article&gt;();</span>
+
+	    try {
+<span class="nc" id="L21">	    	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L22">                    .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L23">                    .addAnnotatedClass(article.class);</span>
+     		// Create a SessionFactory
+<span class="nc" id="L25">     		SessionFactory sf = configuration.buildSessionFactory();</span>
+     	        
+     		// Open a session
+<span class="nc" id="L28">     		Session session = sf.openSession(); </span>
+	    	
+<span class="nc" id="L30">	        Query&lt;article&gt; query = session.createQuery(&quot;FROM article&quot;, article.class);</span>
+<span class="nc" id="L31">	        list = query.list();</span>
+<span class="nc" id="L32">	    } catch (Exception e) {</span>
+<span class="nc" id="L33">	        System.out.println(e);</span>
+	    }
+	    
+<span class="nc" id="L36">	    return list;</span>
+	}
+	
+	@SuppressWarnings(&quot;unchecked&quot;)
+	public List&lt;article&gt; ambildatasemuanya(){
+<span class="nc" id="L41">    	List&lt;article&gt; guh = new ArrayList&lt;article&gt;();</span>
+    	// Open the Configuration
+<span class="nc" id="L43">    	 		Configuration configuration = new Configuration()</span>
+<span class="nc" id="L44">    	                 .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L45">    	                 .addAnnotatedClass(article.class);</span>
+    		  // Create a SessionFactory
+<span class="nc" id="L47">    	      SessionFactory sf = configuration.buildSessionFactory();</span>
+    	  	        
+    	      // Open a session
+<span class="nc" id="L50">    	      Session session = sf.openSession(); </span>
+    	      
+    	      // Begin a transaction
+<span class="nc" id="L53">    	      Transaction tx = session.beginTransaction();</span>
+    	      
+<span class="nc" id="L55">    	      Query&lt;article&gt; query = session.createQuery(&quot;FROM article&quot;);</span>
+
+    	      
+<span class="nc" id="L58">    	      guh = query.list();</span>
+    	      
+<span class="nc" id="L60">    	      tx.commit();</span>
+    	      
+<span class="nc" id="L62">    	      sf.close();</span>
+    	      
+<span class="nc" id="L64">    	      return guh;</span>
+    	      
+    }
+	
+	public void savearticle(article acc) {
+    	// Open the Configuration
+<span class="nc" id="L70"> 		Configuration configuration = new Configuration()</span>
+<span class="nc" id="L71">                 .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L72">                 .addAnnotatedClass(article.class);</span>
+	  // Create a SessionFactory
+<span class="nc" id="L74">      SessionFactory sf = configuration.buildSessionFactory();</span>
+  	        
+      // Open a session
+<span class="nc" id="L77">      Session session = sf.openSession(); </span>
+      
+      // Begin a transaction
+<span class="nc" id="L80">      Transaction tx = session.beginTransaction();</span>
+      
+      // Save the student
+<span class="nc" id="L83">      session.save(acc);</span>
+	
+      // Commit the transaction
+<span class="nc" id="L86">      tx.commit();</span>
+
+      // Close the SessionFactory
+<span class="nc" id="L89">      sf.close();</span>
+      
+<span class="nc" id="L91">      System.out.println(&quot;CLEAR&quot;);</span>
+<span class="nc" id="L92">    }</span>
+	
+	public void updatearticle(article acc) {
+    	// Open the Configuration
+<span class="nc" id="L96"> 		Configuration configuration = new Configuration()</span>
+<span class="nc" id="L97">                 .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L98">                 .addAnnotatedClass(article.class);</span>
+	  // Create a SessionFactory
+<span class="nc" id="L100">      SessionFactory sf = configuration.buildSessionFactory();</span>
+  	        
+      // Open a session
+<span class="nc" id="L103">      Session session = sf.openSession(); </span>
+      
+      // Begin a transaction
+<span class="nc" id="L106">      Transaction tx = session.beginTransaction();</span>
+      
+      // Save the student
+<span class="nc" id="L109">      session.update(acc);</span>
+	
+      // Commit the transaction
+<span class="nc" id="L112">      tx.commit();</span>
+
+      // Close the SessionFactory
+<span class="nc" id="L115">      sf.close();</span>
+      
+<span class="nc" id="L117">      System.out.println(&quot;CLEAR&quot;);</span>
+<span class="nc" id="L118">    }</span>
+	
+@SuppressWarnings(&quot;removal&quot;)
+public void deleteArticle(String id) {
+		
+<span class="nc" id="L123">		Configuration configuration = new Configuration()</span>
+<span class="nc" id="L124">                .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L125">                .addAnnotatedClass(article.class);</span>
+	  // Create a SessionFactory
+<span class="nc" id="L127">     SessionFactory sf = configuration.buildSessionFactory();</span>
+ 	        
+     // Open a session
+<span class="nc" id="L130">     Session session = sf.openSession(); </span>
+     
+     // Begin a transaction
+<span class="nc" id="L133">     Transaction tx = session.beginTransaction();</span>
+<span class="nc" id="L134">     article acc = (article)session.load(article.class, new Integer(Integer.valueOf(id)));</span>
+<span class="nc" id="L135">     session.delete(acc);</span>
+<span class="nc" id="L136">     tx.commit();</span>
+<span class="nc" id="L137">     sf.close();</span>
+<span class="nc" id="L138">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>article.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">article.java</span></div><h1>article.java</h1><pre class="source lang-java linenums">package controller;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import model.articleDAO;
+
+@ManagedBean(name=&quot;article&quot;)
+@SessionScoped
+@Entity
+@Table(name=&quot;article&quot;)
+<span class="nc" id="L18">public class article {</span>
+
+	@Id
+	private int articleID;
+	private String username;
+	private String content;
+	private String img;
+	private String date;
+	private String title;
+	
+	
+	public int getArticleID() {
+<span class="nc" id="L30">		return articleID;</span>
+	}
+	public void setArticleID(int articleID) {
+<span class="nc" id="L33">		this.articleID = articleID;</span>
+<span class="nc" id="L34">	}</span>
+	public String getUsername() {
+<span class="nc" id="L36">		return username;</span>
+	}
+	public void setUsername(String username) {
+<span class="nc" id="L39">		this.username = username;</span>
+<span class="nc" id="L40">	}</span>
+	public String getContent() {
+<span class="nc" id="L42">		return content;</span>
+	}
+	public void setContent(String content) {
+<span class="nc" id="L45">		this.content = content;</span>
+<span class="nc" id="L46">	}</span>
+	public String getImg() {
+<span class="nc" id="L48">		return img;</span>
+	}
+	public void setImg(String img) {
+<span class="nc" id="L51">		this.img = img;</span>
+<span class="nc" id="L52">	}</span>
+	public String getDate() {
+<span class="nc" id="L54">		return date;</span>
+	}
+	public void setDate(String date) {
+<span class="nc" id="L57">		this.date = date;</span>
+<span class="nc" id="L58">	}</span>
+	public String getTitle() {
+<span class="nc" id="L60">		return title;</span>
+	}
+	public void setTitle(String title) {
+<span class="nc" id="L63">		this.title = title;</span>
+<span class="nc" id="L64">	}</span>
+	
+	public List&lt;article&gt; getdatatbl() {
+<span class="nc" id="L67">		articleDAO guh = new articleDAO();</span>
+<span class="nc" id="L68">		List&lt;article&gt; meh = guh.ambildatasemuanya();</span>
+<span class="nc" id="L69">		return meh;</span>
+	}
+	
+	public String register() {
+<span class="nc" id="L73">		Date cd = new Date();</span>
+<span class="nc" id="L74">		String meh = String.valueOf(cd);</span>
+<span class="nc" id="L75">		article acc = new article();</span>
+<span class="nc" id="L76">        acc.setArticleID(0);</span>
+<span class="nc" id="L77">        acc.setContent(content);</span>
+<span class="nc" id="L78">        acc.setDate(meh);</span>
+<span class="nc" id="L79">        acc.setImg(img);</span>
+<span class="nc" id="L80">        acc.setTitle(title);</span>
+<span class="nc" id="L81">        acc.setUsername(username);</span>
+
+<span class="nc" id="L83">      	articleDAO accdao = new articleDAO();</span>
+<span class="nc" id="L84">      	accdao.savearticle(acc);</span>
+<span class="nc" id="L85">      	return &quot;admin&quot;;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

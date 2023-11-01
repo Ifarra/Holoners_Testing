@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>communityNav.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">test</a> &gt; <span class="el_source">communityNav.java</span></div><h1>communityNav.java</h1><pre class="source lang-java linenums">package test;
+
+import static net.sourceforge.jwebunit.junit.JWebUnit.assertTextPresent;
+import static net.sourceforge.jwebunit.junit.JWebUnit.assertTitleEquals;
+import static net.sourceforge.jwebunit.junit.JWebUnit.beginAt;
+import static net.sourceforge.jwebunit.junit.JWebUnit.clickLinkWithText;
+import static net.sourceforge.jwebunit.junit.JWebUnit.gotoPage;
+import static net.sourceforge.jwebunit.junit.JWebUnit.setBaseUrl;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+<span class="nc" id="L13">class communityNav {</span>
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+<span class="nc" id="L17">		setBaseUrl(&quot;http://localhost:8080/Holoners&quot;);</span>
+<span class="nc" id="L18">	}</span>
+
+	//To Login
+	@Test
+	void CommunityToLoginWithBtn() {
+<span class="nc" id="L23">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml</span>
+<span class="nc" id="L24">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L25">        clickLinkWithText(&quot;Login&quot;);</span>
+<span class="nc" id="L26">        assertTitleEquals(&quot;Holoners&quot;);</span>
+<span class="nc" id="L27">	}</span>
+	
+	@Test
+	void CommunityToLoginWithLink() {
+<span class="nc" id="L31">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml</span>
+<span class="nc" id="L32">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L33">        gotoPage(&quot;http://localhost:8080/Holoners/login.xhtml&quot;);</span>
+<span class="nc" id="L34">        assertTitleEquals(&quot;Holoners&quot;);</span>
+<span class="nc" id="L35">	}</span>
+	
+	//To Home
+	@Test
+	void CommunityToHomeWithBtn() {
+<span class="nc" id="L40">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml</span>
+<span class="nc" id="L41">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L42">        clickLinkWithText(&quot;Holoners&quot;);</span>
+<span class="nc" id="L43">        assertTitleEquals(&quot;Holoners : Home page&quot;);</span>
+<span class="nc" id="L44">	}</span>
+	
+	@Test
+	void CommunityToHomeWithLink() {
+<span class="nc" id="L48">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml</span>
+<span class="nc" id="L49">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L50">		gotoPage(&quot;http://localhost:8080/Holoners/index.xhtml&quot;);</span>
+<span class="nc" id="L51">        assertTitleEquals(&quot;Holoners : Home page&quot;);</span>
+<span class="nc" id="L52">	}</span>
+	
+	//To Talent
+	@Test
+	void CommunityToTalentWithBtn() {
+<span class="nc" id="L57">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml</span>
+<span class="nc" id="L58">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L59">        clickLinkWithText(&quot;Talent&quot;);</span>
+<span class="nc" id="L60">        assertTextPresent(&quot;Hololive Member&quot;);</span>
+<span class="nc" id="L61">	}</span>
+	
+	@Test
+	void CommunityToTalentWithLink() {
+<span class="nc" id="L65">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml </span>
+<span class="nc" id="L66">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L67">		gotoPage(&quot;http://localhost:8080/Holoners/talent.xhtml&quot;);</span>
+<span class="nc" id="L68">		assertTextPresent(&quot;Hololive Member&quot;);</span>
+<span class="nc" id="L69">	}</span>
+	
+	//To Article
+	@Test
+	void CommunityToArticleWithBtn() {
+<span class="nc" id="L74">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml  </span>
+<span class="nc" id="L75">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L76">        clickLinkWithText(&quot;Article&quot;);</span>
+<span class="nc" id="L77">        assertTextPresent(&quot;Hololive Article&quot;);</span>
+<span class="nc" id="L78">	}</span>
+	
+	@Test
+	void CommunityToArticleWithLink() {
+<span class="nc" id="L82">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml  </span>
+<span class="nc" id="L83">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L84">		gotoPage(&quot;http://localhost:8080/Holoners/article.xhtml&quot;);</span>
+<span class="nc" id="L85">		assertTextPresent(&quot;Hololive Article&quot;);</span>
+<span class="nc" id="L86">	}</span>
+	
+	//To Community
+	@Test
+	void CommunityToCommunityWithBtn() {
+<span class="nc" id="L91">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml   </span>
+<span class="nc" id="L92">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L93">        clickLinkWithText(&quot;Community&quot;);</span>
+<span class="nc" id="L94">        assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L95">	}</span>
+	
+	@Test
+	void CommunityToCommunityWithLink() {
+<span class="nc" id="L99">		beginAt(&quot;community.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml    </span>
+<span class="nc" id="L100">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L101">		gotoPage(&quot;http://localhost:8080/Holoners/community.xhtml&quot;);</span>
+<span class="nc" id="L102">		assertTextPresent(&quot;Hololive Community&quot;);</span>
+<span class="nc" id="L103">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

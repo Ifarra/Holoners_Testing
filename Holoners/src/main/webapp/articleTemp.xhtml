@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="Mobirise v5.9.6, mobirise.com" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<link rel="shortcut icon"
+		href="assets/images/android-chrome-192x192-128x128.png"
+		type="image/x-icon" />
+	<meta name="description" content="" />
+
+	<title>Hello World</title>
+
+	<link rel="stylesheet"
+		href="assets/web/assets/mobirise-icons2/mobirise2.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="assets/bootstrap/css/bootstrap-grid.min.css" />
+	<link rel="stylesheet"
+		href="assets/bootstrap/css/bootstrap-reboot.min.css" />
+	<link rel="stylesheet" href="assets/dropdown/css/style.css" />
+	<link rel="stylesheet" href="assets/socicon/css/styles.css" />
+	<link rel="stylesheet" href="assets/theme/css/style.css" />
+	<link rel="preload"
+		href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=swap"
+		as="style" onload="this.onload=null;this.rel='stylesheet'" />
+	<noscript>
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=swap" />
+	</noscript>
+	<link rel="preload" as="style"
+		href="assets/mobirise/css/mbr-additional.css" />
+	<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css"
+		type="text/css" />
+</h:head>
+
+<h:body>
+
+	<f:metadata>
+        <f:viewParam name="id" />
+        <f:event type="preRenderView" listener="#{atemp.selectRowById(id)}" />
+    </f:metadata>
+
+	<!-- Inject Template -->
+	<ui:composition template="baseTemp.xhtml">
+		<ui:define name="body">
+
+			<!-- Page content-->
+			<div class="container mt-5">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<!-- Post content-->
+						<article> <!-- Post header--> <header class="mb-4">
+						<!-- Post title-->
+						<h1 class="fw-bolder mb-1 text-light">#{atemp.talent.title}</h1>
+						<!-- Post meta content-->
+						<div class="text-muted fst-italic mb-2">Posted on #{atemp.talent.date} by #{atemp.talent.username}</div>
+						<!-- Post categories--> </header> <!-- Preview image figure--> <figure
+							class="mb-4">
+						<img class="img-fluid rounded"
+							src="#{atemp.talent.img}"
+							alt="..." /></figure> <!-- Post content--> <section class="mb-5">
+						<p class="fs-5 mb-4 text-light">#{atemp.talent.content}</p>
+						
+						</section> </article>
+						<!-- Comments section-->
+						<section>
+						<div class="container mt-5">
+							<div class="row d-flex justify-content-between">
+								<div class="col-sm-5 col-md-6 col-12 pb-4">
+									<h1 class="text-light">Comments</h1>
+									<div class="comment mt-4 text-justify float-left amoguscoment">
+
+										<h4 class="text-light">Jhon Doe</h4>
+										<span class="text-light">- 20 October, 2018</span> <br />
+										<p class="text-light">Lorem ipsum dolor sit, amet consectetur adipisicing
+											elit. Accusamus numquam assumenda hic aliquam vero sequi
+											velit molestias doloremque molestiae dicta?</p>
+									</div>
+									<div class="text-justify darker mt-4 float-right">
+
+										<h4 class="text-light">Rob Simpson</h4>
+										<span class="text-light">- 20 October, 2018</span> <br />
+										<p class="text-light">Lorem ipsum dolor sit, amet consectetur adipisicing
+											elit. Accusamus numquam assumenda hic aliquam vero sequi
+											velit molestias doloremque molestiae dicta?</p>
+									</div>
+									<div class="comment mt-4 text-justify">
+
+										<h4 class="text-light">Jhon Doe</h4>
+										<span class="text-light">- 20 October, 2018</span> <br />
+										<p class="text-light">Lorem ipsum dolor sit, amet consectetur adipisicing
+											elit. Accusamus numquam assumenda hic aliquam vero sequi
+											velit molestias doloremque molestiae dicta?</p>
+									</div>
+									<div class="darker mt-4 text-justify">
+										<h4 class="text-light">Rob Simpson</h4>
+										<span class="text-light">- 20 October, 2018</span> <br />
+										<p class="text-light">Lorem ipsum dolor sit, amet consectetur adipisicing
+											elit. Accusamus numquam assumenda hic aliquam vero sequi
+											velit molestias doloremque molestiae dicta?</p>
+									</div>
+								</div>
+								<div class="col-sm-5 col-md-6 col-12 pb-4">
+									<form id="algin-form" action="">
+										<div class="form-group">
+											<h3 class="mb-3  text-light">Leave a comment</h3>
+											<textarea name="msg" id="" msg="msg" cols="30" rows="5"
+												class="form-control text-light"
+												style="background-color: black;"></textarea>
+										</div>
+										<div class="form-group">
+											<button type="button" id="post" class="btn">Post
+												Comment</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						</section>
+					</div>
+
+
+
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>navbar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">navbar.java</span></div><h1>navbar.java</h1><pre class="source lang-java linenums">package controller;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean(name=(&quot;stats&quot;))
+@SessionScoped
+<span class="nc" id="L8">public class navbar {</span>
+
+<span class="nc" id="L10">	private boolean loggedin = false;</span>
+<span class="nc" id="L11">	private boolean unloggdin = true;</span>
+	
+	
+	public boolean isLoggedin() {
+<span class="nc" id="L15">		return loggedin;</span>
+	}
+	public void setLoggedin(boolean loggedin) {
+<span class="nc" id="L18">		this.loggedin = loggedin;</span>
+<span class="nc" id="L19">	}</span>
+	public boolean isUnloggdin() {
+<span class="nc" id="L21">		return unloggdin;</span>
+	}
+	public void setUnloggdin(boolean unloggdin) {
+<span class="nc" id="L24">		this.unloggdin = unloggdin;</span>
+<span class="nc" id="L25">	}</span>
+	
+	public String login() {
+        // Implement your login logic here
+<span class="nc" id="L29">		loggedin = true;</span>
+<span class="nc" id="L30">		unloggdin = false;</span>
+<span class="nc" id="L31">        return &quot;login&quot;; // Redirect to the dashboard page after login</span>
+    }
+	
+
+    public String account() {
+<span class="nc" id="L36">        return &quot;account&quot;; // Redirect to the home page after logout</span>
+    }
+    
+    public String logout() {
+        // Implement your logout logic here
+<span class="nc" id="L41">    	loggedin = false;</span>
+<span class="nc" id="L42">    	unloggdin = true;</span>
+<span class="nc" id="L43">        return &quot;index&quot;; // Redirect to the home page after logout</span>
+    }
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

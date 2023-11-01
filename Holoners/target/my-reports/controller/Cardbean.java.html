@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cardbean.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">Cardbean.java</span></div><h1>Cardbean.java</h1><pre class="source lang-java linenums">package controller;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+@ManagedBean(name=(&quot;card&quot;))
+@SessionScoped
+<span class="nc" id="L14">public class Cardbean {</span>
+	
+    private List&lt;talent&gt; cards; // Replace CardEntity with your entity class
+
+    
+
+    public List&lt;talent&gt; getCards() {
+<span class="nc bnc" id="L21" title="All 2 branches missed.">    	if (cards == null) {</span>
+<span class="nc" id="L22">            fetchDataFromDatabase(); // Fetch data when cards is null</span>
+        }
+<span class="nc" id="L24">		return cards;</span>
+	}
+
+
+
+	public void setCards(List&lt;talent&gt; cards) {
+<span class="nc" id="L30">		this.cards = cards;</span>
+<span class="nc" id="L31">	}</span>
+
+
+
+	private void fetchDataFromDatabase() {
+        // Use Hibernate to fetch data from the database and populate 'cards'
+        try {
+<span class="nc" id="L38">        	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L39">                    .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L40">                    .addAnnotatedClass(talent.class);</span>
+     		// Create a SessionFactory
+<span class="nc" id="L42">     		SessionFactory sf = configuration.buildSessionFactory();</span>
+     	        
+     		// Open a session
+<span class="nc" id="L45">     		Session session = sf.openSession(); </span>
+<span class="nc" id="L46">            Query&lt;talent&gt; query = session.createQuery(&quot;FROM talent&quot;, talent.class);</span>
+<span class="nc" id="L47">            cards = query.list();</span>
+<span class="nc" id="L48">        } catch (Exception e) {</span>
+<span class="nc" id="L49">            e.printStackTrace();</span>
+        }
+<span class="nc" id="L51">    }</span>
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

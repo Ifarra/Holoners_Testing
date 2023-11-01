@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>talent.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">talent.java</span></div><h1>talent.java</h1><pre class="source lang-java linenums">package controller;
+
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import model.talentDAO;
+
+@ManagedBean(name=&quot;talent&quot;)
+@SessionScoped
+@Entity
+@Table(name=&quot;talent&quot;)
+<span class="nc" id="L18">public class talent {</span>
+
+	@Id
+	private int talentID;
+	@Column(name = &quot;name&quot;)
+	private String name;
+	@Column(name = &quot;branch&quot;)
+	private String branch;
+	@Column(name = &quot;debut&quot;)
+	private String debut;
+	@Column(name = &quot;jpname&quot;)
+	private String jpname;
+	@Column(name = &quot;fanname&quot;)
+	private String fanname;
+	@Column(name = &quot;bio&quot;)
+	private String bio;
+	@Column(name = &quot;personality&quot;)
+	private String personality;
+	@Column(name = &quot;overview&quot;)
+	private String overview;
+	@Column(name = &quot;img&quot;)
+	private String img;
+	
+	
+	public int getTalentID() {
+<span class="nc" id="L43">		return talentID;</span>
+	}
+	public void setTalentID(int talentID) {
+<span class="nc" id="L46">		this.talentID = talentID;</span>
+<span class="nc" id="L47">	}</span>
+	public String getName() {
+<span class="nc" id="L49">		return name;</span>
+	}
+	public void setName(String name) {
+<span class="nc" id="L52">		this.name = name;</span>
+<span class="nc" id="L53">	}</span>
+	public String getBranch() {
+<span class="nc" id="L55">		return branch;</span>
+	}
+	public void setBranch(String branch) {
+<span class="nc" id="L58">		this.branch = branch;</span>
+<span class="nc" id="L59">	}</span>
+	public String getDebut() {
+<span class="nc" id="L61">		return debut;</span>
+	}
+	public void setDebut(String debut) {
+<span class="nc" id="L64">		this.debut = debut;</span>
+<span class="nc" id="L65">	}</span>
+	public String getJpname() {
+<span class="nc" id="L67">		return jpname;</span>
+	}
+	public void setJpname(String jpname) {
+<span class="nc" id="L70">		this.jpname = jpname;</span>
+<span class="nc" id="L71">	}</span>
+	public String getFanname() {
+<span class="nc" id="L73">		return fanname;</span>
+	}
+	public void setFanname(String fanname) {
+<span class="nc" id="L76">		this.fanname = fanname;</span>
+<span class="nc" id="L77">	}</span>
+	public String getBio() {
+<span class="nc" id="L79">		return bio;</span>
+	}
+	public void setBio(String bio) {
+<span class="nc" id="L82">		this.bio = bio;</span>
+<span class="nc" id="L83">	}</span>
+	public String getPersonality() {
+<span class="nc" id="L85">		return personality;</span>
+	}
+	public void setPersonality(String personality) {
+<span class="nc" id="L88">		this.personality = personality;</span>
+<span class="nc" id="L89">	}</span>
+	public String getOverview() {
+<span class="nc" id="L91">		return overview;</span>
+	}
+	public void setOverview(String overview) {
+<span class="nc" id="L94">		this.overview = overview;</span>
+<span class="nc" id="L95">	}</span>
+	public String getImg() {
+<span class="nc" id="L97">		return img;</span>
+	}
+	public void setImg(String img) {
+<span class="nc" id="L100">		this.img = img;</span>
+<span class="nc" id="L101">	}</span>
+	
+	public List&lt;talent&gt; getdatatbl() {
+<span class="nc" id="L104">		talentDAO guh = new talentDAO();</span>
+<span class="nc" id="L105">		List&lt;talent&gt; meh = guh.ambildatasemuanya();</span>
+<span class="nc" id="L106">		return meh;</span>
+	}
+	
+	public String register() {
+<span class="nc" id="L110">		talent acc = new talent();</span>
+<span class="nc" id="L111">        acc.setTalentID(0);</span>
+<span class="nc" id="L112">        acc.setBio(bio);</span>
+<span class="nc" id="L113">        acc.setBranch(branch);</span>
+<span class="nc" id="L114">        acc.setImg(img);</span>
+<span class="nc" id="L115">        acc.setFanname(fanname);</span>
+<span class="nc" id="L116">        acc.setPersonality(personality);</span>
+<span class="nc" id="L117">        acc.setOverview(overview);</span>
+<span class="nc" id="L118">        acc.setJpname(jpname);</span>
+<span class="nc" id="L119">        acc.setDebut(debut);</span>
+<span class="nc" id="L120">        acc.setName(name);</span>
+
+<span class="nc" id="L122">        talentDAO accdao = new talentDAO();</span>
+<span class="nc" id="L123">      	accdao.savetalent(acc);</span>
+<span class="nc" id="L124">      	return &quot;admin&quot;;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

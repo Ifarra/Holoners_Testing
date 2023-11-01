@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="Mobirise v5.9.6, mobirise.com" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<link rel="shortcut icon"
+		href="assets/images/android-chrome-192x192-128x128.png"
+		type="image/x-icon" />
+	<meta name="description" content="" />
+
+	<title>Holoners</title>
+	
+	<link rel="stylesheet"
+		href="assets/web/assets/mobirise-icons2/mobirise2.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="assets/bootstrap/css/bootstrap-grid.min.css" />
+	<link rel="stylesheet"
+		href="assets/bootstrap/css/bootstrap-reboot.min.css" />
+	<link rel="stylesheet" href="assets/dropdown/css/style.css" />
+	<link rel="stylesheet" href="assets/socicon/css/styles.css" />
+	<link rel="stylesheet" href="assets/theme/css/style.css" />
+	<link rel="stylesheet" href="assets/Main/cssmain.css" />
+	<link rel="stylesheet" href="assets/talent/style.css" />
+	<link rel="stylesheet" href="assets/article/style.css" />
+	<link rel="stylesheet" href="assets/community/style.css" />
+	<link rel="stylesheet" href="assets/articletemp/style.css" />
+	<link rel="stylesheet" href="assets/talenttemp/style.css" />
+	<link rel="stylesheet" href="assets/account/style.css" />
+	<link rel="preload"
+		href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=swap"
+		as="style" onload="this.onload=null;this.rel='stylesheet'" />
+	<noscript>
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=swap" />
+	</noscript>
+	<link rel="preload" as="style"
+		href="assets/mobirise/css/mbr-additional.css" />
+	<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css"
+		type="text/css" />
+<style>
+body {
+background-color: #000000;
+}
+</style>
+
+</h:head>
+
+<h:body>
+
+	<section data-bs-version="5.1" class="menu menu1 cid-tR81YDZGgs"
+		once="menu" id="menu1-h"> <nav
+		class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+	<div class="container">
+		<div class="navbar-brand">
+			<span class="navbar-logo"> <a href="index.xhtml#header10-9"> <img
+					src="assets/images/android-chrome-192x192-128x128.png"
+					alt="Mobirise Website Builder" style="height: 3rem;" />
+			</a>
+			</span> <span class="navbar-caption-wrap"><a
+				class="navbar-caption text-white text-primary display-7"
+				href="index.xhtml#header10-9">Holoners</a></span>
+		</div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-bs-toggle="collapse" data-target="#navbarSupportedContent"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<div class="hamburger">
+				<span></span> <span></span> <span></span> <span></span>
+			</div>
+		</button>
+		<h:form style="background:transparent; border: none; 
+     border-radius: 0px; 
+     padding: 0px;">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav nav-dropdown nav-right"
+				data-app-modern-menu="true">
+				<li class="nav-item"><a
+					class="nav-link link text-white text-primary display-4"
+					href="article.xhtml#header10-9">Article</a></li>
+				<li class="nav-item"><a
+					class="nav-link link text-white text-primary display-4"
+					href="talent.xhtml">Talent</a></li>
+				<li class="nav-item"><a
+					class="nav-link link text-white text-primary display-4"
+					href="community.xhtml">Community</a></li>
+				<li class="nav-item"><h:commandLink value="Login" class="nav-link link text-white text-primary display-4" action="#{stats.login}" rendered="#{stats.unloggdin}" />
+					</li>
+				<li class="nav-item"><h:outputLink value="account.xhtml?id=#{account.email}" rendered="#{stats.loggedin}" styleClass="nav-link link text-white text-primary display-4">
+    <h:outputText value="Account" />
+</h:outputLink>
+					</li>
+				<li class="nav-item"><h:commandLink value="Logout" class="nav-link link text-white text-primary display-4" action="#{stats.logout}" rendered="#{stats.loggedin}" />
+					</li>
+			</ul>
+
+
+		</div>
+		</h:form>
+	</div>
+	</nav> </section>
+
+	<section data-bs-version="5.1" class="image3 cid-tRhjbDDfDd"
+		id="image3-j">
+
+
+
+
+
+	<div class="container">
+		<div class="row justify-content-center">
+
+			<!-- START TEMPLATE -->
+
+			<ui:insert name="body" />
+
+		</div>
+	</div>
+	</section>
+
+	<section data-bs-version="5.1" class="footer3 cid-tRgARzENRz"
+		once="footers" id="footer3-i">
+
+
+
+
+
+	<div class="container">
+		<div class="media-container-row align-center mbr-white">
+
+			<div class="row social-row">
+				<div class="social-list align-right pb-2">
+
+
+
+
+
+
+					<div class="soc-item">
+						<a href="https://twitter.com/holonerspage" target="_blank"> <span
+							class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+						</a>
+					</div>
+					<div class="soc-item">
+						<a href="https://www.facebook.com/pages/holonerspage"
+							target="_blank"> <span
+							class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+						</a>
+					</div>
+					<div class="soc-item">
+						<a href="https://www.youtube.com/c/holonerspage" target="_blank">
+							<span
+							class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row row-copirayt">
+				<p
+					class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+					© Copyright 2023 Holoners. All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!--  
+	<script src="assets/bootstrap/js/bootstrap.bundle.min.js" type=""></script>
+	<script src="assets/smoothscroll/smooth-scroll.js" type=""></script>
+	<script src="assets/ytplayer/index.js" type=""></script>
+	<script src="assets/dropdown/js/navbar-dropdown.js" type=""></script>
+	<script src="assets/theme/js/script.js" type=""></script>
+	-->
+
+</h:body>
+
+</html>

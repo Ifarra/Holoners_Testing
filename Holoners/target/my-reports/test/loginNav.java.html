@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>loginNav.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">test</a> &gt; <span class="el_source">loginNav.java</span></div><h1>loginNav.java</h1><pre class="source lang-java linenums">package test;
+
+import static net.sourceforge.jwebunit.junit.JWebUnit.assertFormElementPresent;
+import static net.sourceforge.jwebunit.junit.JWebUnit.assertFormPresent;
+import static net.sourceforge.jwebunit.junit.JWebUnit.assertTitleEquals;
+import static net.sourceforge.jwebunit.junit.JWebUnit.beginAt;
+import static net.sourceforge.jwebunit.junit.JWebUnit.setBaseUrl;
+import static net.sourceforge.jwebunit.junit.JWebUnit.setFormElement;
+import static net.sourceforge.jwebunit.junit.JWebUnit.submit;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+<span class="nc" id="L14">class loginNav {</span>
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+<span class="nc" id="L18">		setBaseUrl(&quot;http://localhost:8080/Holoners&quot;);</span>
+<span class="nc" id="L19">	}</span>
+
+	@SuppressWarnings(&quot;deprecation&quot;)
+	@Test
+	public void LoginToHome() {
+<span class="nc" id="L24">        beginAt(&quot;login.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml    </span>
+<span class="nc" id="L25">        assertTitleEquals(&quot;Holoners&quot;);</span>
+<span class="nc" id="L26">        assertFormPresent(&quot;loginfrm&quot;);         // click the link</span>
+<span class="nc" id="L27">        assertFormElementPresent(&quot;loginfrm:logemail&quot;);</span>
+<span class="nc" id="L28">        assertFormElementPresent(&quot;loginfrm:logpass&quot;);</span>
+<span class="nc" id="L29">        setFormElement(&quot;loginfrm:logemail&quot;, &quot;login@gmail.com&quot;);</span>
+<span class="nc" id="L30">        setFormElement(&quot;loginfrm:logpass&quot;, &quot;login&quot;);</span>
+<span class="nc" id="L31">        submit();</span>
+<span class="nc" id="L32">        assertTitleEquals(&quot;Holoners : Home page&quot;);</span>
+<span class="nc" id="L33">    }</span>
+	
+	@SuppressWarnings(&quot;deprecation&quot;)
+	@Test
+	public void LoginToHomeFail() {
+<span class="nc" id="L38">        beginAt(&quot;login.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml    </span>
+<span class="nc" id="L39">        assertTitleEquals(&quot;Holoners&quot;);</span>
+<span class="nc" id="L40">        assertFormPresent(&quot;loginfrm&quot;);         // click the link</span>
+<span class="nc" id="L41">        assertFormElementPresent(&quot;loginfrm:logemail&quot;);</span>
+<span class="nc" id="L42">        assertFormElementPresent(&quot;loginfrm:logpass&quot;);</span>
+<span class="nc" id="L43">        setFormElement(&quot;loginfrm:logemail&quot;, &quot;loginners@gmail.com&quot;);</span>
+<span class="nc" id="L44">        setFormElement(&quot;loginfrm:logpass&quot;, &quot;login&quot;);</span>
+<span class="nc" id="L45">        submit();</span>
+<span class="nc" id="L46">        assertTitleEquals(&quot;Holoners&quot;);</span>
+<span class="nc" id="L47">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>comment.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">comment.java</span></div><h1>comment.java</h1><pre class="source lang-java linenums">package controller;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import model.commentDAO;
+import model.communityDAO;
+
+@ManagedBean(name=&quot;comment&quot;)
+@SessionScoped
+@Entity
+@Table(name=&quot;comment&quot;)
+<span class="nc" id="L19">public class comment {</span>
+
+	@Id
+	private int commentID;
+	private String username;
+	private String content;
+	private String date;
+	private String page;
+	private String subid;
+	
+	
+	public String getSubid() {
+<span class="nc" id="L31">		return subid;</span>
+	}
+	public void setSubid(String subid) {
+<span class="nc" id="L34">		this.subid = subid;</span>
+<span class="nc" id="L35">	}</span>
+	public String getPage() {
+<span class="nc" id="L37">		return page;</span>
+	}
+	public void setPage(String page) {
+<span class="nc" id="L40">		this.page = page;</span>
+<span class="nc" id="L41">	}</span>
+	public int getCommentID() {
+<span class="nc" id="L43">		return commentID;</span>
+	}
+	public void setCommentID(int commentID) {
+<span class="nc" id="L46">		this.commentID = commentID;</span>
+<span class="nc" id="L47">	}</span>
+	public String getUsername() {
+<span class="nc" id="L49">		return username;</span>
+	}
+	public void setUsername(String username) {
+<span class="nc" id="L52">		this.username = username;</span>
+<span class="nc" id="L53">	}</span>
+	public String getContent() {
+<span class="nc" id="L55">		return content;</span>
+	}
+	public void setContent(String content) {
+<span class="nc" id="L58">		this.content = content;</span>
+<span class="nc" id="L59">	}</span>
+	public String getDate() {
+<span class="nc" id="L61">		return date;</span>
+	}
+	public void setDate(String date) {
+<span class="nc" id="L64">		this.date = date;</span>
+<span class="nc" id="L65">	}</span>
+	
+	public void pasangnama(String guh) {
+<span class="nc" id="L68">		username = guh;</span>
+<span class="nc" id="L69">	}</span>
+	
+	public void pasangpage(String guh) {
+<span class="nc" id="L72">		page = guh;</span>
+<span class="nc" id="L73">	}</span>
+
+	public void pasangsub(String guh) {
+<span class="nc" id="L76">		subid = guh;</span>
+<span class="nc" id="L77">	}</span>
+	
+	
+	
+	public List&lt;comment&gt; getdatatbl() {
+<span class="nc" id="L82">		commentDAO guh = new commentDAO();</span>
+<span class="nc" id="L83">		List&lt;comment&gt; meh = guh.ambildatasemuanya();</span>
+<span class="nc" id="L84">		return meh;</span>
+	}
+	
+	public List&lt;community&gt; getdatatblcom() {
+<span class="nc" id="L88">		System.out.println(&quot;Community&quot;);</span>
+<span class="nc" id="L89">		communityDAO guh = new communityDAO();</span>
+<span class="nc" id="L90">		List&lt;community&gt; meh = guh.ambildatasemuanya();</span>
+<span class="nc" id="L91">		return meh;</span>
+	}
+	
+	public String register() {
+<span class="nc" id="L95">		Date cd = new Date();</span>
+<span class="nc" id="L96">		String meh = String.valueOf(cd);</span>
+<span class="nc" id="L97">		comment acc = new comment();</span>
+<span class="nc" id="L98">        acc.setCommentID(0);</span>
+<span class="nc" id="L99">        acc.setContent(content);</span>
+<span class="nc" id="L100">        acc.setDate(meh);</span>
+<span class="nc" id="L101">        acc.setSubid(subid);</span>
+<span class="nc" id="L102">        acc.setPage(page);</span>
+<span class="nc" id="L103">        acc.setUsername(username);</span>
+
+<span class="nc" id="L105">      	commentDAO accdao = new commentDAO();</span>
+<span class="nc" id="L106">      	accdao.savecomment(acc);</span>
+<span class="nc" id="L107">      	return &quot;admin&quot;;</span>
+	}
+	
+	public void commentadd(String nama, String halaman, String sub) {
+<span class="nc" id="L111">		Date cd = new Date();</span>
+<span class="nc" id="L112">		String meh = String.valueOf(cd);</span>
+<span class="nc" id="L113">		comment acc = new comment();</span>
+<span class="nc" id="L114">        acc.setCommentID(0);</span>
+<span class="nc" id="L115">        acc.setContent(content);</span>
+<span class="nc" id="L116">        acc.setDate(meh);</span>
+<span class="nc" id="L117">        acc.setSubid(sub);</span>
+<span class="nc" id="L118">        acc.setPage(halaman);</span>
+<span class="nc" id="L119">        acc.setUsername(nama);</span>
+
+<span class="nc" id="L121">      	commentDAO accdao = new commentDAO();</span>
+<span class="nc" id="L122">      	accdao.savecomment(acc);</span>
+<span class="nc" id="L123">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

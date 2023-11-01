@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>talentDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">talentDAO.java</span></div><h1>talentDAO.java</h1><pre class="source lang-java linenums">package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import controller.account;
+import controller.talent;
+
+@SuppressWarnings(&quot;deprecation&quot;)
+<span class="nc" id="L16">public class talentDAO {</span>
+
+	public static List&lt;talent&gt; getAllRecords() {
+<span class="nc" id="L19">	    List&lt;talent&gt; list = new ArrayList&lt;talent&gt;();</span>
+
+	    try {
+<span class="nc" id="L22">	    	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L23">                    .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L24">                    .addAnnotatedClass(account.class);</span>
+     		// Create a SessionFactory
+<span class="nc" id="L26">     		SessionFactory sf = configuration.buildSessionFactory();</span>
+     	        
+     		// Open a session
+<span class="nc" id="L29">     		Session session = sf.openSession(); </span>
+	    	
+<span class="nc" id="L31">	        Query&lt;talent&gt; query = session.createQuery(&quot;FROM Book&quot;, talent.class);</span>
+<span class="nc" id="L32">	        list = query.list();</span>
+<span class="nc" id="L33">	    } catch (Exception e) {</span>
+<span class="nc" id="L34">	        System.out.println(e);</span>
+	    }
+	    
+<span class="nc" id="L37">	    return list;</span>
+	}
+	
+	@SuppressWarnings(&quot;unchecked&quot;)
+	public List&lt;talent&gt; ambildatasemuanya(){
+<span class="nc" id="L42">    	List&lt;talent&gt; guh = new ArrayList&lt;talent&gt;();</span>
+    	// Open the Configuration
+<span class="nc" id="L44">    	 		Configuration configuration = new Configuration()</span>
+<span class="nc" id="L45">    	                 .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L46">    	                 .addAnnotatedClass(talent.class);</span>
+    		  // Create a SessionFactory
+<span class="nc" id="L48">    	      SessionFactory sf = configuration.buildSessionFactory();</span>
+    	  	        
+    	      // Open a session
+<span class="nc" id="L51">    	      Session session = sf.openSession(); </span>
+    	      
+    	      // Begin a transaction
+<span class="nc" id="L54">    	      Transaction tx = session.beginTransaction();</span>
+    	      
+<span class="nc" id="L56">    	      Query&lt;talent&gt; query = session.createQuery(&quot;FROM talent&quot;);</span>
+
+    	      
+<span class="nc" id="L59">    	      guh = query.list();</span>
+    	      
+<span class="nc" id="L61">    	      tx.commit();</span>
+    	      
+<span class="nc" id="L63">    	      sf.close();</span>
+    	      
+<span class="nc" id="L65">    	      return guh;</span>
+    	      
+    }
+	
+	public void savetalent(talent acc) {
+    	// Open the Configuration
+<span class="nc" id="L71"> 		Configuration configuration = new Configuration()</span>
+<span class="nc" id="L72">                 .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L73">                 .addAnnotatedClass(talent.class);</span>
+	  // Create a SessionFactory
+<span class="nc" id="L75">      SessionFactory sf = configuration.buildSessionFactory();</span>
+  	        
+      // Open a session
+<span class="nc" id="L78">      Session session = sf.openSession(); </span>
+      
+      // Begin a transaction
+<span class="nc" id="L81">      Transaction tx = session.beginTransaction();</span>
+      
+      // Save the student
+<span class="nc" id="L84">      session.save(acc);</span>
+	
+      // Commit the transaction
+<span class="nc" id="L87">      tx.commit();</span>
+
+      // Close the SessionFactory
+<span class="nc" id="L90">      sf.close();</span>
+      
+<span class="nc" id="L92">      System.out.println(&quot;CLEAR&quot;);</span>
+<span class="nc" id="L93">    }</span>
+	
+	public void updatetalent(talent acc) {
+    	// Open the Configuration
+<span class="nc" id="L97"> 		Configuration configuration = new Configuration()</span>
+<span class="nc" id="L98">                 .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L99">                 .addAnnotatedClass(talent.class);</span>
+	  // Create a SessionFactory
+<span class="nc" id="L101">      SessionFactory sf = configuration.buildSessionFactory();</span>
+  	        
+      // Open a session
+<span class="nc" id="L104">      Session session = sf.openSession(); </span>
+      
+      // Begin a transaction
+<span class="nc" id="L107">      Transaction tx = session.beginTransaction();</span>
+      
+      // Save the student
+<span class="nc" id="L110">      session.update(acc);</span>
+	
+      // Commit the transaction
+<span class="nc" id="L113">      tx.commit();</span>
+
+      // Close the SessionFactory
+<span class="nc" id="L116">      sf.close();</span>
+      
+<span class="nc" id="L118">      System.out.println(&quot;CLEAR&quot;);</span>
+<span class="nc" id="L119">    }</span>
+	
+@SuppressWarnings(&quot;removal&quot;)
+public void deleteTalent(String id) {
+		
+<span class="nc" id="L124">		Configuration configuration = new Configuration()</span>
+<span class="nc" id="L125">                .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L126">                .addAnnotatedClass(talent.class);</span>
+	  // Create a SessionFactory
+<span class="nc" id="L128">     SessionFactory sf = configuration.buildSessionFactory();</span>
+ 	        
+     // Open a session
+<span class="nc" id="L131">     Session session = sf.openSession(); </span>
+     
+     // Begin a transaction
+<span class="nc" id="L134">     Transaction tx = session.beginTransaction();</span>
+<span class="nc" id="L135">     talent acc = (talent)session.load(talent.class, new Integer(Integer.valueOf(id)));</span>
+<span class="nc" id="L136">     session.delete(acc);</span>
+<span class="nc" id="L137">     tx.commit();</span>
+<span class="nc" id="L138">     sf.close();</span>
+<span class="nc" id="L139">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

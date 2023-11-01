@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">account.java</span></div><h1>account.java</h1><pre class="source lang-java linenums">package controller;
+
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import model.accountDAO;
+
+@ManagedBean(name = &quot;account&quot;)
+@SessionScoped
+@Entity
+@Table(name = &quot;account&quot;)
+<span class="nc" id="L18">public class account {</span>
+
+	@Id
+	private int accID;
+	@Column(name = &quot;username&quot;)
+	private String username;
+	@Column(name = &quot;password&quot;)
+	private String password;
+	@Column(name = &quot;email&quot;)
+	private String email;
+	@Column(name = &quot;role&quot;)
+	private String role;
+	
+	
+	public int getAccID() {
+<span class="nc" id="L33">		return accID;</span>
+	}
+	public void setAccID(int accID) {
+<span class="nc" id="L36">		this.accID = accID;</span>
+<span class="nc" id="L37">	}</span>
+	public String getUsername() {
+<span class="nc" id="L39">		return username;</span>
+	}
+	public void setUsername(String username) {
+<span class="nc" id="L42">		this.username = username;</span>
+<span class="nc" id="L43">	}</span>
+	public String getPassword() {
+<span class="nc" id="L45">		return password;</span>
+	}
+	public void setPassword(String password) {
+<span class="nc" id="L48">		this.password = password;</span>
+<span class="nc" id="L49">	}</span>
+	public String getEmail() {
+<span class="nc" id="L51">		return email;</span>
+	}
+	public void setEmail(String email) {
+<span class="nc" id="L54">		this.email = email;</span>
+<span class="nc" id="L55">	}</span>
+	public String getRole() {
+<span class="nc" id="L57">		return role;</span>
+	}
+	public void setRole(String role) {
+<span class="nc" id="L60">		this.role = role;</span>
+<span class="nc" id="L61">	}</span>
+	
+	
+    // Create a ProductDAO instance
+	public void register() {
+<span class="nc" id="L66">		account acc = new account();</span>
+<span class="nc" id="L67">        acc.setAccID(0);</span>
+<span class="nc" id="L68">        acc.setUsername(username);</span>
+<span class="nc" id="L69">        acc.setPassword(password);</span>
+<span class="nc" id="L70">        acc.setEmail(email);</span>
+<span class="nc" id="L71">        acc.setRole(&quot;member&quot;);</span>
+
+<span class="nc" id="L73">      	accountDAO accdao = new accountDAO();</span>
+<span class="nc" id="L74">      	accdao.saveacc(acc);</span>
+     
+<span class="nc" id="L76">	}</span>
+	
+	public String login() {
+<span class="nc" id="L79">      	accountDAO accdao = new accountDAO();</span>
+<span class="nc" id="L80">      	String guh = accdao.login(email, password);</span>
+      	
+<span class="nc bnc" id="L82" title="All 2 branches missed.">      	if(guh.equals(&quot;index&quot;)) {</span>
+<span class="nc" id="L83">      		return &quot;index&quot;;</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">      	} else if (guh.equals(&quot;admin&quot;)) {</span>
+<span class="nc" id="L85">      		return &quot;admin&quot;;</span>
+      	}
+      	
+<span class="nc" id="L88">      	return &quot;login&quot;;</span>
+     
+	}
+	
+	public String testlogin() {
+<span class="nc" id="L93">      	accountDAO accdao = new accountDAO();</span>
+<span class="nc" id="L94">      	String guh = accdao.testlogin(email, password);</span>
+     
+<span class="nc bnc" id="L96" title="All 2 branches missed.">      	if (guh.equals(&quot;index&quot;)){</span>
+<span class="nc" id="L97">      		return &quot;index&quot;;</span>
+      	}
+<span class="nc" id="L99">      	return &quot;login&quot;;</span>
+	}
+	
+	public void modify(account account) {
+<span class="nc" id="L103">      	accountDAO accdao = new accountDAO();</span>
+<span class="nc" id="L104">      	accdao.updateacc(account);</span>
+     
+<span class="nc" id="L106">	}</span>
+	
+	public List&lt;account&gt; getdata() {
+<span class="nc" id="L109">		accountDAO guh = new accountDAO();</span>
+<span class="nc" id="L110">		List&lt;account&gt; meh = guh.ambildata();</span>
+<span class="nc" id="L111">		return meh;</span>
+	}
+	
+	public List&lt;account&gt; getdatatbl() {
+<span class="nc" id="L115">		accountDAO guh = new accountDAO();</span>
+<span class="nc" id="L116">		List&lt;account&gt; meh = guh.ambildatasemuanya();</span>
+<span class="nc" id="L117">		return meh;</span>
+	}
+	
+	public void setsemua(int id,String nama,String email,String password,String role) {
+<span class="nc" id="L121">		System.out.println(id);</span>
+<span class="nc" id="L122">		System.out.println(nama);</span>
+<span class="nc" id="L123">		System.out.println(email);</span>
+<span class="nc" id="L124">		System.out.println(password);</span>
+<span class="nc" id="L125">		System.out.println(role);</span>
+<span class="nc" id="L126">		setAccID(id);</span>
+<span class="nc" id="L127">		setUsername(nama);</span>
+<span class="nc" id="L128">		setEmail(email);</span>
+<span class="nc" id="L129">		setPassword(password);</span>
+<span class="nc" id="L130">		setRole(role);</span>
+<span class="nc" id="L131">		System.out.println(this.accID);</span>
+<span class="nc" id="L132">		System.out.println(this.email);</span>
+<span class="nc" id="L133">		System.out.println(this.password);</span>
+<span class="nc" id="L134">		System.out.println(this.username);</span>
+<span class="nc" id="L135">		System.out.println(this.role);</span>
+<span class="nc" id="L136">	}</span>
+	
+	public String registeracc() {
+<span class="nc" id="L139">		account acc = new account();</span>
+<span class="nc" id="L140">        acc.setAccID(0);</span>
+<span class="nc" id="L141">        acc.setUsername(username);</span>
+<span class="nc" id="L142">        acc.setPassword(password);</span>
+<span class="nc" id="L143">        acc.setEmail(email);</span>
+<span class="nc" id="L144">        acc.setRole(role);</span>
+
+<span class="nc" id="L146">      	accountDAO accdao = new accountDAO();</span>
+<span class="nc" id="L147">      	accdao.saveacc(acc);</span>
+<span class="nc" id="L148">      	return &quot;admin&quot;;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

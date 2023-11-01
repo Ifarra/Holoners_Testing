@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TestUnit.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">db</a> &gt; <span class="el_source">TestUnit.java</span></div><h1>TestUnit.java</h1><pre class="source lang-java linenums">/**
+ * 
+ */
+package db;
+
+import static net.sourceforge.jwebunit.junit.JWebUnit.assertFormPresent;
+import static net.sourceforge.jwebunit.junit.JWebUnit.assertLinkNotPresent;
+import static net.sourceforge.jwebunit.junit.JWebUnit.assertTitleEquals;
+import static net.sourceforge.jwebunit.junit.JWebUnit.beginAt;
+import static net.sourceforge.jwebunit.junit.JWebUnit.setBaseUrl;
+import static net.sourceforge.jwebunit.junit.JWebUnit.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * 
+ */
+<span class="nc" id="L19">class TestUnit {</span>
+
+	
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeEach
+	void setUp() throws Exception {
+<span class="nc" id="L27">		setBaseUrl(&quot;http://localhost:8080/Holoners&quot;);</span>
+<span class="nc" id="L28">	}</span>
+
+	@Test	
+    public void test1() {
+<span class="nc" id="L32">        beginAt(&quot;login.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml    </span>
+<span class="nc" id="L33">        assertTitleEquals(&quot;Holoners&quot;);</span>
+<span class="nc" id="L34">        assertLinkNotPresent(&quot;Logout&quot;);		// we should not be logged in</span>
+<span class="nc" id="L35">        assertFormPresent(&quot;loginfrm&quot;);</span>
+<span class="nc" id="L36">    }</span>
+	
+	@Test	
+    public void test2() {
+<span class="nc" id="L40">        beginAt(&quot;index.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml    </span>
+<span class="nc" id="L41">        assertTitleEquals(&quot;Holoners : Home page&quot;);</span>
+<span class="nc" id="L42">    }</span>
+	
+	@SuppressWarnings(&quot;deprecation&quot;)
+	@Test	
+    public void test3() {
+<span class="nc" id="L47">        beginAt(&quot;login.xhtml&quot;); //Open the browser on http://localhost:8080/test/home.xhtml    </span>
+<span class="nc" id="L48">        assertTitleEquals(&quot;Holoners&quot;);</span>
+<span class="nc" id="L49">        assertFormPresent(&quot;loginfrm&quot;);         // click the link</span>
+<span class="nc" id="L50">        assertFormElementPresent(&quot;loginfrm:logemail&quot;);</span>
+<span class="nc" id="L51">        assertFormElementPresent(&quot;loginfrm:logpass&quot;);</span>
+<span class="nc" id="L52">        setFormElement(&quot;loginfrm:logemail&quot;, &quot;login@gmail.com&quot;);</span>
+<span class="nc" id="L53">        setFormElement(&quot;loginfrm:logpass&quot;, &quot;login&quot;);</span>
+<span class="nc" id="L54">        submit();</span>
+<span class="nc" id="L55">        assertTitleEquals(&quot;Holoners : Home page&quot;);</span>
+<span class="nc" id="L56">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

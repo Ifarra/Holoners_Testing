@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="Mobirise v5.9.6, mobirise.com" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<link rel="shortcut icon"
+		href="assets/images/android-chrome-192x192-128x128.png"
+		type="image/x-icon" />
+	<meta name="description" content="" />
+
+	<title>Hello World</title>
+
+	<link rel="stylesheet"
+		href="assets/web/assets/mobirise-icons2/mobirise2.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="assets/bootstrap/css/bootstrap-grid.min.css" />
+	<link rel="stylesheet"
+		href="assets/bootstrap/css/bootstrap-reboot.min.css" />
+	<link rel="stylesheet" href="assets/dropdown/css/style.css" />
+	<link rel="stylesheet" href="assets/socicon/css/styles.css" />
+	<link rel="stylesheet" href="assets/theme/css/style.css" />
+	<link rel="preload"
+		href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=swap"
+		as="style" onload="this.onload=null;this.rel='stylesheet'" />
+	<noscript>
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=swap" />
+	</noscript>
+	<link rel="preload" as="style"
+		href="assets/mobirise/css/mbr-additional.css" />
+	<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css"
+		type="text/css" />
+</h:head>
+
+<h:body>
+	
+	<f:metadata>
+        <f:viewParam name="id" />
+        <f:event type="preRenderView" listener="#{acctemp.selectRowById(id)}" />
+    </f:metadata>
+	
+	<!-- Inject Template -->
+	<ui:composition template="baseTemp.xhtml">
+		<ui:define name="body">
+
+	<style>
+
+.my-table {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+.my-table th, .my-table td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+.my-table tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+.my-table tr.header, .my-table tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+
+.datacons {
+max-height: 400px;
+overflow-y: scroll;
+overflow-x: hidden;
+}
+	</style>
+
+	<section data-bs-version="5.1" class="image3" style="margin-top:10vh;margin-bottom:10vh;background-color: #000000;"
+				id="image3-j">
+	<h1>Account Table<span><a href="addaccount.xhtml" class="btn"><button class="userbtn">ADD</button></a></span></h1>
+	<div class="datacons">
+    <h:dataTable id="myTableacc" value="#{account.getdatatbl()}" var="item" styleClass="my-table">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{item.accID}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Username</f:facet>
+            #{item.username}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Password</f:facet>
+            #{item.password}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Email</f:facet>
+            #{item.email}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Role</f:facet>
+            #{item.role}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Update</f:facet>
+            <a href="updateacc.xhtml?id=#{item.accID}" class="btn btn-light"><button>Update</button></a>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <a href="deleteacc.xhtml?id=#{item.accID}" class="btn btn-light"><button>Detele</button></a>
+        </h:column>
+    </h:dataTable>
+	</div>
+    
+			</section>
+
+
+<section data-bs-version="5.1" class="image3" style="margin-top:10vh;margin-bottom:10vh;background-color: #000000;"
+				id="image3-j">
+	<h1>Article Table<span><a href="addarticle.xhtml" class="btn"><button class="userbtn">ADD</button></a></span></h1>
+	<div class="datacons">
+    <h:dataTable id="myTableart" value="#{article.getdatatbl()}" var="item" styleClass="my-table">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{item.articleID}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Username</f:facet>
+            #{item.username}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Date</f:facet>
+            #{item.date}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Img</f:facet>
+            #{item.img}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Title</f:facet>
+            #{item.title}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Update</f:facet>
+            <a href="updatearticle.xhtml?id=#{item.articleID}" class="btn btn-light"><button>Update</button></a>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <a href="deletearticle.xhtml?id=#{item.articleID}" class="btn btn-light"><button>Delete</button></a>
+        </h:column>
+    </h:dataTable>
+	</div>
+    
+			</section>
+			
+	<section data-bs-version="5.1" class="image3" style="margin-top:10vh;margin-bottom:10vh;background-color: #000000;"
+				id="image3-j">
+	<h1>Talent Table<span><a href="addtalent.xhtml" class="btn"><button class="userbtn">ADD</button></a></span></h1>
+	<div class="datacons">
+    <h:dataTable id="myTabletlnt" value="#{talent.getdatatbl()}" var="item" styleClass="my-table">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{item.talentID}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{item.name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Branch</f:facet>
+            #{item.branch}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Debut Date</f:facet>
+            #{item.debut}
+        </h:column>
+        <h:column>
+            <f:facet name="header">FanName</f:facet>
+            #{item.fanname}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Update</f:facet>
+            <a href="updatetalent.xhtml?id=#{item.talentID}" class="btn btn-light"><button>Delete</button></a>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <a href="deletetalent.xhtml?id=#{item.talentID}" class="btn btn-light"><button>Delete</button></a>
+        </h:column>
+    </h:dataTable>
+	</div>
+    
+			</section>
+			
+	<section data-bs-version="5.1" class="image3" style="margin-top:10vh;margin-bottom:10vh;background-color: #000000;"
+				id="image3-j">
+	<h1>Comment Table<span><a href="addcomment.xhtml" class="btn"><button class="userbtn">ADD</button></a></span></h1>
+	<div class="datacons">
+    <h:dataTable id="myTablecmt" value="#{comment.getdatatbl()}" var="item" styleClass="my-table">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{item.commentID}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Username</f:facet>
+            #{item.username}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Content</f:facet>
+            #{item.content}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Date</f:facet>
+            #{item.date}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Page</f:facet>
+            #{item.page}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Subid</f:facet>
+            #{item.subid}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Update</f:facet>
+            <a href="updatecomment.xhtml?id=#{item.commentID}" class="btn btn-light"><button>Update</button></a>     
+        </h:column>
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <a href="deletecomment.xhtml?id=#{item.commentID}" class="btn btn-light"><button>Delete</button></a>     
+        </h:column>
+    </h:dataTable>
+	</div>
+    
+			</section>
+			
+			
+	<section data-bs-version="5.1" class="image3" style="margin-top:10vh;margin-bottom:10vh;background-color: #000000;"
+				id="image3-j">
+	<h1>Community Table<span><a href="addcommunity.xhtml" class="btn"><button class="userbtn">ADD</button></a></span></h1>
+	<div class="datacons">
+    <h:dataTable id="myTablecom" value="#{comment.getdatatblcom()}" var="item" styleClass="my-table">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{item.communityID}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Username</f:facet>
+            #{item.username}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Title</f:facet>
+            #{item.title}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Iframe</f:facet>
+            #{item.iframe}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Date</f:facet>
+            #{item.date}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Update</f:facet>
+            <a href="updatecommunity.xhtml?id=#{item.communityID}" class="btn btn-light"><button>Update</button></a> 
+        </h:column>
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <a href="deletecommunity.xhtml?id=#{item.communityID}" class="btn btn-light"><button>Delete</button></a> 
+        </h:column>
+    </h:dataTable>
+	</div>
+    
+			</section>
+	
+	
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="Mobirise v5.9.6, mobirise.com" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<link rel="shortcut icon"
+		href="assets/images/android-chrome-192x192-128x128.png"
+		type="image/x-icon" />
+	<meta name="description" content="" />
+
+
+</h:head>
+<h:body>
+
+	<ui:composition template="baseTemp.xhtml">
+		<ui:define name="body">
+			<!-- 
+		    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchButton = document.getElementById("searchButton");
+            const searchInput = document.getElementById("searchInput");
+
+            searchButton.addEventListener("click", function() {
+                // Get the value entered in the search bar
+                const searchValue = searchInput.value.trim();
+
+                // Loop through all elements with the "title" class
+                const elements = document.querySelectorAll(".title");
+                let found = false;
+
+                elements.forEach(function(element) {
+                    if (element.textContent.includes(searchValue)) {
+                        // Scroll to the element with a smooth transition
+                        element.scrollIntoView({ behavior: "smooth" });
+                        found = true;
+                    }
+                });
+
+                // If no matching element is found, alert the user
+                if (!found) {
+                    alert("No matching element found.");
+                }
+            });
+        });
+    </script> 
+			 -->
+			<section data-bs-version="5.1" class="image3 " style="padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #000000;"
+				id="image3-j">
+
+
+
+
+
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-12 col-lg-10">
+
+
+
+						<div class="main-search-input-wrap">
+								<div class="d-flex justify-content-center mb-5 text-light">
+								<h1 class="font-weight-bold">Hololive Member</h1></div>
+								
+							<div class="main-search-input fl-wrap">
+								<div class="main-search-input-item">
+									<input type="text" id ="searchInput" value="" placeholder="Search Products..." />
+								</div>
+
+								<button class="main-search-button" id="searchButton">Search</button>
+							</div>
+
+
+						</div>
+
+					</div>
+
+					<div class="row d-flex justify-content-center mt-5">
+						<ui:repeat value="#{card.cards}" var="crd">
+			            <div class="col d-flex justify-content-center">
+			                <div class="card" id="#{crd.talentID}">
+			                    <div class="img-container">
+			                        <div class="img"><img src="#{crd.img}" style="width: 100%;height: 100%;object-fit: cover;"></img></div>
+			                        <div class="description card">
+			                            <a href="talentTemp.xhtml?id=#{crd.talentID}"><span class="title"> #{crd.name} </span></a>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			        </ui:repeat>
+						
+					</div>
+					
+					
+
+				</div>
+			</div>
+			<div></div>
+			</section>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <!-- Database connection properties -->
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/holoners</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">rafiind1324</property>
+
+        <!-- Specify dialect for the database -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Auto-generate tables from annotated entities (for development) -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Enable logging -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Specify entity scan package(s) -->
+        <mapping class="controller.account"/>
+        <mapping class="controller.talent"/>
+        <mapping class="controller.article"/>
+        <mapping class="controller.community"/>
+        <mapping class="controller.comment"/>
+         <!-- Replace with your entity package and class -->
+
+        
+    </session-factory>
+</hibernate-configuration>

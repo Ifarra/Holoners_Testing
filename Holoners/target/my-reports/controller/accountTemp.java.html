@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>accountTemp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">accountTemp.java</span></div><h1>accountTemp.java</h1><pre class="source lang-java linenums">package controller;
+
+import java.util.List;
+
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+import model.accountDAO;
+
+
+
+@ManagedBean(name=(&quot;acctemp&quot;))
+@SessionScoped
+<span class="nc" id="L21">public class accountTemp {</span>
+
+	private account talent;
+	private List&lt;account&gt; temp;
+	
+	
+	
+	public account getTalent() {
+<span class="nc" id="L29">		return talent;</span>
+	}
+
+
+
+	public void setTalent(account talent) {
+<span class="nc" id="L35">		this.talent = talent;</span>
+<span class="nc" id="L36">	}</span>
+
+
+
+	public List&lt;account&gt; getTemp() {
+<span class="nc" id="L41">		return temp;</span>
+	}
+
+
+
+	public void setTemp(List&lt;account&gt; temp) {
+<span class="nc" id="L47">		this.temp = temp;</span>
+<span class="nc" id="L48">	}</span>
+
+
+	public void modify() {
+<span class="nc" id="L52">      	accountDAO accdao = new accountDAO();</span>
+<span class="nc" id="L53">      	accdao.updateacc(talent);</span>
+     
+<span class="nc" id="L55">	}</span>
+
+	public void selectRowById(String id) {
+        // Initialize Hibernate session
+        try {
+<span class="nc" id="L60">        	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L61">                    .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L62">                    .addAnnotatedClass(account.class);</span>
+     		// Create a SessionFactory
+<span class="nc" id="L64">     		SessionFactory sf = configuration.buildSessionFactory();</span>
+     	        
+     		// Open a session
+<span class="nc" id="L67">     		Session session = sf.openSession(); </span>
+<span class="nc" id="L68">            Query&lt;account&gt; query = session.createQuery(&quot;FROM account t WHERE t.email = :selectedId&quot;, account.class);</span>
+<span class="nc" id="L69">            query.setParameter(&quot;selectedId&quot;, id);</span>
+
+            // Execute the query and get the result
+<span class="nc" id="L72">            talent = query.uniqueResult();</span>
+
+<span class="nc bnc" id="L74" title="All 2 branches missed.">            if (talent == null) {</span>
+                // Handle the case when no matching row is found
+<span class="nc" id="L76">                talent = new account();</span>
+            }
+<span class="nc" id="L78">        } catch (Exception e) {</span>
+<span class="nc" id="L79">            e.printStackTrace();</span>
+        }
+<span class="nc" id="L81">    }</span>
+	
+	public void ambatuc(String id) {
+<span class="nc" id="L84">		accountDAO accdao = new accountDAO();</span>
+<span class="nc" id="L85">      	accdao.deleteAcc(id);</span>
+<span class="nc" id="L86">	}</span>
+	
+	public void delete(String id) {
+<span class="nc" id="L89">		int guh = Integer.valueOf(id);</span>
+        // Initialize Hibernate session
+        try {
+<span class="nc" id="L92">        	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L93">                    .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L94">                    .addAnnotatedClass(account.class);</span>
+     		// Create a SessionFactory
+<span class="nc" id="L96">     		SessionFactory sf = configuration.buildSessionFactory();</span>
+     	        
+     		// Open a session
+<span class="nc" id="L99">     		Session session = sf.openSession(); </span>
+	     	// Begin a transaction
+<span class="nc" id="L101">	  	    Transaction tx = session.beginTransaction();</span>
+<span class="nc" id="L102">            Query&lt;account&gt; query = session.createQuery(&quot;delete account t WHERE t.accID = :selectedId&quot;, account.class);</span>
+<span class="nc" id="L103">            query.setParameter(&quot;selectedId&quot;, guh);</span>
+
+<span class="nc" id="L105">            tx.commit();</span>
+            
+<span class="nc" id="L107">            sf.close();</span>
+<span class="nc" id="L108">        } catch (Exception e) {</span>
+<span class="nc" id="L109">            e.printStackTrace();</span>
+        }
+<span class="nc" id="L111">    }</span>
+	
+	public void selectacc(String id) {
+<span class="nc" id="L114">		int guh = Integer.valueOf(id);</span>
+        // Initialize Hibernate session
+        try {
+<span class="nc" id="L117">        	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L118">                    .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L119">                    .addAnnotatedClass(account.class);</span>
+     		// Create a SessionFactory
+<span class="nc" id="L121">     		SessionFactory sf = configuration.buildSessionFactory();</span>
+     	        
+     		// Open a session
+<span class="nc" id="L124">     		Session session = sf.openSession(); </span>
+<span class="nc" id="L125">            Query&lt;account&gt; query = session.createQuery(&quot;FROM account t WHERE t.accID = :selectedId&quot;, account.class);</span>
+<span class="nc" id="L126">            query.setParameter(&quot;selectedId&quot;, guh);</span>
+
+            // Execute the query and get the result
+<span class="nc" id="L129">            talent = query.uniqueResult();</span>
+
+<span class="nc bnc" id="L131" title="All 2 branches missed.">            if (talent == null) {</span>
+                // Handle the case when no matching row is found
+<span class="nc" id="L133">                talent = new account();</span>
+            }
+<span class="nc" id="L135">        } catch (Exception e) {</span>
+<span class="nc" id="L136">            e.printStackTrace();</span>
+        }
+<span class="nc" id="L138">    }</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

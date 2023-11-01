@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="Mobirise v5.9.6, mobirise.com" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<link rel="shortcut icon"
+		href="assets/images/android-chrome-192x192-128x128.png"
+		type="image/x-icon" />
+	<meta name="description" content="" />
+
+	<title>Hello World</title>
+
+	<link rel="stylesheet"
+		href="assets/web/assets/mobirise-icons2/mobirise2.css" />
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="assets/bootstrap/css/bootstrap-grid.min.css" />
+	<link rel="stylesheet"
+		href="assets/bootstrap/css/bootstrap-reboot.min.css" />
+	<link rel="stylesheet" href="assets/dropdown/css/style.css" />
+	<link rel="stylesheet" href="assets/socicon/css/styles.css" />
+	<link rel="stylesheet" href="assets/theme/css/style.css" />
+	<link rel="preload"
+		href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=swap"
+		as="style" onload="this.onload=null;this.rel='stylesheet'" />
+	<noscript>
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&amp;display=swap" />
+	</noscript>
+	<link rel="preload" as="style"
+		href="assets/mobirise/css/mbr-additional.css" />
+	<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css"
+		type="text/css" />
+</h:head>
+
+<h:body>
+	
+	<f:metadata>
+        <f:viewParam name="id" />
+        <f:event type="preRenderView" listener="#{cmt.selectarticle(id)}" />
+    </f:metadata>
+	
+	<!-- Inject Template -->
+	<ui:composition template="baseTemp.xhtml">
+		<ui:define name="body">
+
+<section data-bs-version="5.1" class="image3" style="margin-top:40vh;margin-bottom:40vh;background-color: #000000;"
+				id="image3-j">
+			<div class="usercontainer">
+			    <h:form styleClass="userform" style="background-color: transparent; border:none;">
+			        <div class="userform_front">
+			            <div class="userform_details">Update Comment</div>
+			            <h:inputHidden type="text" value="#{cmt.talent.commentID}" />
+			            <h:inputHidden type="text" value="#{cmt.talent.date}" />
+			            <h3>Username</h3>
+			            <h:inputText placeholder="Username" class="userinput placeholdyes" type="text" value="#{cmt.talent.username}" disabled="true" />
+			            <h3>Page</h3>
+			            <h:inputText placeholder="Page" class="userinput placeholdyes" type="text" value="#{cmt.talent.page}" disabled="true" />
+			            <h3>Subid</h3>
+			            <h:inputText placeholder="SubID" class="userinput placeholdyes" type="text" value="#{cmt.talent.subid}" disabled="true" />
+			            <h3>Content</h3>
+			            <h:inputText placeholder="Content" class="userinput placeholdyes" type="text" value="#{cmt.talent.content}" disabled="true" />          
+			            <h:commandButton id="btnInsertmek" value="Update" class="userbtn" action="#{cmt.ambatuc(cmt.talent.commentID)}" />
+			        </div>
+			    </h:form>
+			</div>
+			</section>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

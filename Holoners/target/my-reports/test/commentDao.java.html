@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>commentDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Holoners</a> &gt; <a href="index.source.html" class="el_package">test</a> &gt; <span class="el_source">commentDao.java</span></div><h1>commentDao.java</h1><pre class="source lang-java linenums">package test;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.Date;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+
+import controller.comment;
+import model.commentDAO;
+
+<span class="nc" id="L17">public class commentDao {</span>
+    private commentDAO commentDao;
+
+    @BeforeAll
+    public void setUp() {
+<span class="nc" id="L22">        commentDao = new commentDAO();</span>
+<span class="nc" id="L23">    }</span>
+
+    @Test
+    public void testAmbilDataSemua() {
+<span class="nc" id="L27">    	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L28">                .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L29">                .addAnnotatedClass(comment.class);</span>
+	     // Create a SessionFactory
+<span class="nc" id="L31">	     SessionFactory sf = configuration.buildSessionFactory();</span>
+	    	        
+	     // Open a session
+<span class="nc" id="L34">	     Session session = sf.openSession(); </span>
+	     
+<span class="nc" id="L36">	     session.beginTransaction();</span>
+	
+<span class="nc" id="L38">	     commentDao = new commentDAO();</span>
+	     
+        // Assuming you have some sample data in the test database
+<span class="nc" id="L41">        List&lt;comment&gt; comments = commentDao.ambildatasemuanya();</span>
+
+<span class="nc" id="L43">        session.getTransaction().commit();</span>
+<span class="nc" id="L44">        session.close();</span>
+
+        // Verify that the method returns a non-empty list
+<span class="nc" id="L47">        assertEquals(false, comments.isEmpty());</span>
+<span class="nc" id="L48">    }</span>
+
+    
+    @Test
+    public void testSaveComment() {
+<span class="nc" id="L53">    	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L54">                .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L55">                .addAnnotatedClass(comment.class);</span>
+	     // Create a SessionFactory
+<span class="nc" id="L57">	     SessionFactory sf = configuration.buildSessionFactory();</span>
+	    	        
+	     // Open a session
+<span class="nc" id="L60">	     Session session = sf.openSession(); </span>
+	     
+<span class="nc" id="L62">	     session.beginTransaction();</span>
+
+	     
+<span class="nc" id="L65">	    commentDao = new commentDAO();</span>
+<span class="nc" id="L66">	    comment sampleComment = new comment();</span>
+<span class="nc" id="L67">	    Date cd = new Date();</span>
+<span class="nc" id="L68">		String meh = String.valueOf(cd);</span>
+    	// Create a sample comment and save it
+<span class="nc" id="L70">        sampleComment.setCommentID(0);</span>
+<span class="nc" id="L71">        sampleComment.setContent(&quot;TestComment&quot;);</span>
+<span class="nc" id="L72">        sampleComment.setDate(meh);</span>
+<span class="nc" id="L73">        sampleComment.setSubid(&quot;1&quot;);</span>
+<span class="nc" id="L74">        sampleComment.setPage(&quot;1&quot;);</span>
+<span class="nc" id="L75">        sampleComment.setUsername(&quot;TestUser&quot;);</span>
+<span class="nc" id="L76">        commentDao.savecomment(sampleComment);</span>
+
+<span class="nc" id="L78">        comment latestComment = commentDao.getLatestComment();</span>
+
+        // Verify that the comment was saved successfully
+<span class="nc" id="L81">        comment retrievedComment = (comment) session.get(comment.class, latestComment.getCommentID());</span>
+<span class="nc" id="L82">        assertEquals(&quot;TestUser&quot;, retrievedComment.getUsername());</span>
+<span class="nc" id="L83">        commentDao.deleteComment(String.valueOf(latestComment.getCommentID()));</span>
+<span class="nc" id="L84">        session.getTransaction().commit();</span>
+<span class="nc" id="L85">        session.close();</span>
+<span class="nc" id="L86">    }</span>
+
+    @Test
+    public void testUpdateComment() {
+<span class="nc" id="L90">    	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L91">                .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L92">                .addAnnotatedClass(comment.class);</span>
+	     // Create a SessionFactory
+<span class="nc" id="L94">	     SessionFactory sf = configuration.buildSessionFactory();</span>
+	    	        
+	     // Open a session
+<span class="nc" id="L97">	     Session session = sf.openSession(); </span>
+	     
+<span class="nc" id="L99">	     session.beginTransaction();</span>
+	    
+<span class="nc" id="L101">	    commentDao = new commentDAO();</span>
+<span class="nc" id="L102">	    comment sampleComment = new comment();</span>
+<span class="nc" id="L103">	    Date cd = new Date();</span>
+<span class="nc" id="L104">		String meh = String.valueOf(cd);</span>
+    	// Create a sample comment and save it
+<span class="nc" id="L106">        sampleComment.setCommentID(0);</span>
+<span class="nc" id="L107">        sampleComment.setContent(&quot;TestComment&quot;);</span>
+<span class="nc" id="L108">        sampleComment.setDate(meh);</span>
+<span class="nc" id="L109">        sampleComment.setSubid(&quot;1&quot;);</span>
+<span class="nc" id="L110">        sampleComment.setPage(&quot;1&quot;);</span>
+<span class="nc" id="L111">        sampleComment.setUsername(&quot;TestUser&quot;);</span>
+<span class="nc" id="L112">        commentDao.savecomment(sampleComment);</span>
+        
+<span class="nc" id="L114">        comment latestComment = commentDao.getLatestComment();</span>
+        
+        // Modify the comment and update it
+<span class="nc" id="L117">        commentDAO rawr = new commentDAO();</span>
+<span class="nc" id="L118">        latestComment.setContent(&quot;UpdatedContent&quot;);</span>
+<span class="nc" id="L119">        rawr.updatecomment(latestComment);</span>
+        
+        // Verify that the comment was updated successfully
+<span class="nc" id="L122">        comment retrievedComment = (comment) session.get(comment.class, latestComment.getCommentID());</span>
+<span class="nc" id="L123">        assertEquals(&quot;UpdatedContent&quot;, retrievedComment.getContent());</span>
+<span class="nc" id="L124">        commentDao.deleteComment(String.valueOf(latestComment.getCommentID()));</span>
+<span class="nc" id="L125">        session.getTransaction().commit();</span>
+<span class="nc" id="L126">        session.close();</span>
+<span class="nc" id="L127">    }</span>
+
+    @Test
+    public void testDeleteComment() {
+<span class="nc" id="L131">    	Configuration configuration = new Configuration()</span>
+<span class="nc" id="L132">                .configure(&quot;hibernate.cfg.xml&quot;)</span>
+<span class="nc" id="L133">                .addAnnotatedClass(comment.class);</span>
+    	 // Create a SessionFactory
+<span class="nc" id="L135">	     SessionFactory sf = configuration.buildSessionFactory();</span>
+	    	        
+	     // Open a session
+<span class="nc" id="L138">	     Session session = sf.openSession(); </span>
+	     
+<span class="nc" id="L140">	     session.beginTransaction();</span>
+
+	     
+<span class="nc" id="L143">	    commentDao = new commentDAO();</span>
+<span class="nc" id="L144">	    comment sampleComment = new comment();</span>
+<span class="nc" id="L145">	    Date cd = new Date();</span>
+<span class="nc" id="L146">		String meh = String.valueOf(cd);</span>
+    	// Create a sample comment and save it
+<span class="nc" id="L148">        sampleComment.setCommentID(0);</span>
+<span class="nc" id="L149">        sampleComment.setContent(&quot;TestComment&quot;);</span>
+<span class="nc" id="L150">        sampleComment.setDate(meh);</span>
+<span class="nc" id="L151">        sampleComment.setSubid(&quot;1&quot;);</span>
+<span class="nc" id="L152">        sampleComment.setPage(&quot;1&quot;);</span>
+<span class="nc" id="L153">        sampleComment.setUsername(&quot;TestUser&quot;);</span>
+<span class="nc" id="L154">        commentDao.savecomment(sampleComment);</span>
+	     
+<span class="nc" id="L156">        comment latestComment = commentDao.getLatestComment();</span>
+        
+        // Delete the comment and verify that it's removed from the database
+<span class="nc" id="L159">        commentDao.deleteComment(String.valueOf(latestComment.getCommentID()));</span>
+<span class="nc" id="L160">        comment retrievedComment = (comment) session.get(comment.class, latestComment.getCommentID());</span>
+<span class="nc" id="L161">        assertEquals(null, retrievedComment);</span>
+
+<span class="nc" id="L163">        session.getTransaction().commit();</span>
+<span class="nc" id="L164">        session.close();</span>
+<span class="nc" id="L165">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
